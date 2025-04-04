@@ -24,16 +24,15 @@ import ForgotPassword from '../pages/auth/ForgotPassword';
 // 錯誤頁面
 import NotFound from '../pages/error/NotFound';
 
-// 路由配置
+// 簡化的路由配置，避免複雜的嵌套結構
 const routes = [
+  // 公共頁面 - 首頁
   {
     path: '/',
-    element: <PublicLayout />,
-    children: [
-      { path: '', element: <Home /> },
-      { path: '*', element: <Navigate to="/" /> }
-    ]
+    element: <Home />
   },
+  
+  // 應用頁面 - 需要登錄
   {
     path: 'app',
     element: <MainLayout />,
@@ -45,19 +44,14 @@ const routes = [
       { path: 'metalog', element: <MetaLog /> },
       { path: 'schedule', element: <ScheduleHub /> },
       { path: 'analytics', element: <Analytics /> },
-      
-      // 用戶管理
       { path: 'profile', element: <Navigate to="/app/profile/overview" /> },
       { path: 'profile/overview', element: <div>個人資料</div> },
       { path: 'profile/settings', element: <div>設置</div> },
-      
-      // 目標管理
       { path: 'goals/manage', element: <div>管理目標</div> },
-      
-      // 重定向
-      { path: '*', element: <NotFound /> }
     ]
   },
+  
+  // 認證頁面
   {
     path: 'auth',
     element: <AuthLayout />,
@@ -65,9 +59,16 @@ const routes = [
       { path: 'login', element: <Login /> },
       { path: 'register', element: <Register /> },
       { path: 'forgot-password', element: <ForgotPassword /> },
-      { path: '*', element: <Navigate to="/auth/login" /> }
     ]
   },
+  
+  // 404頁面
+  {
+    path: '404',
+    element: <NotFound />
+  },
+  
+  // 所有其他路徑重定向到首頁
   {
     path: '*',
     element: <Navigate to="/" replace />

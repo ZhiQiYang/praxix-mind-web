@@ -2,14 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
+html, body {
+  height: 100%;
   margin: 0;
+  padding: 0;
+}
+
+body {
   font-family: 'Noto Sans TC', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  @apply bg-gray-50;
+  background-color: #f7fafc;
 }
 
 code {
@@ -40,4 +45,58 @@ code {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+}
+
+/* Fallback styles */
+.bg-gradient-to-br {
+  background-image: linear-gradient(to bottom right, #ebf5ff, #e6eeff, #f5f3ff);
+}
+
+.from-blue-50 {
+  --tw-gradient-from: #ebf5ff;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to, rgba(235, 245, 255, 0));
+}
+
+.via-indigo-50 {
+  --tw-gradient-stops: var(--tw-gradient-from), #e6eeff, var(--tw-gradient-to, rgba(230, 238, 255, 0));
+}
+
+.to-purple-50 {
+  --tw-gradient-to: #f5f3ff;
+}
+
+.bg-blue-500 {
+  background-color: #3b82f6;
+}
+
+.bg-blue-600 {
+  background-color: #2563eb;
+}
+
+.bg-blue-700 {
+  background-color: #1d4ed8;
+}
+
+.text-blue-600 {
+  color: #2563eb;
+}
+
+.text-blue-200 {
+  color: #bfdbfe;
+}
+
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-grow {
+  flex-grow: 1;
 } 

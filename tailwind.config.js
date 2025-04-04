@@ -2,6 +2,24 @@
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
+    "./public/index.html"
+  ],
+  safelist: [
+    // 確保這些關鍵類別不會被清除
+    'bg-gradient-to-br',
+    'from-blue-50',
+    'via-indigo-50',
+    'to-purple-50',
+    'bg-blue-500',
+    'bg-blue-600',
+    'bg-blue-700',
+    'text-blue-600',
+    'text-blue-700',
+    'text-blue-200',
+    'flex',
+    'flex-col',
+    'flex-grow',
+    'min-h-screen'
   ],
   theme: {
     extend: {
@@ -56,8 +74,8 @@ module.exports = {
     },
   },
   plugins: [
-    require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
-    require('@tailwindcss/line-clamp'),
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/line-clamp')
   ],
 } 
