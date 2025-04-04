@@ -6,9 +6,9 @@ import { UserContext } from '../../context/UserContext';
 const AuthLayout = () => {
   const { user } = useContext(UserContext);
   
-  // 如果用戶已登錄，則重定向到首頁
+  // 如果用戶已登錄，則重定向到應用首頁
   if (user) {
-    return <Navigate to="/" replace />;
+    return <Navigate to="/app" replace />;
   }
   
   return (

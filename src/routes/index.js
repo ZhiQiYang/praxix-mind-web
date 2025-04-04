@@ -30,12 +30,12 @@ const routes = [
     path: '/',
     element: <PublicLayout />,
     children: [
-      { path: '/', element: <Home /> },
+      { path: '', element: <Home /> },
       { path: '*', element: <Navigate to="/" /> }
     ]
   },
   {
-    path: '/app',
+    path: 'app',
     element: <MainLayout />,
     children: [
       { path: '', element: <Dashboard /> },
@@ -59,7 +59,7 @@ const routes = [
     ]
   },
   {
-    path: '/auth',
+    path: 'auth',
     element: <AuthLayout />,
     children: [
       { path: 'login', element: <Login /> },
@@ -70,7 +70,7 @@ const routes = [
   },
   {
     path: '*',
-    element: <Navigate to="/404" replace />
+    element: <Navigate to="/" replace />
   }
 ];
 

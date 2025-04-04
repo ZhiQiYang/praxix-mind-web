@@ -21,7 +21,7 @@ const Login = () => {
       if (email === 'demo@example.com' && password === 'password') {
         const user = { id: 1, name: '測試用戶', email };
         login(user);
-        navigate('/');
+        navigate('/app');
       } else {
         setError('電子郵件或密碼不正確');
       }
