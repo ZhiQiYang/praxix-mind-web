@@ -27,37 +27,37 @@ const Sidebar = () => {
 
   const navItems = [
     {
-      path: '/',
+      path: '/app',
       name: '儀表板',
       icon: <AiOutlineDashboard className="w-6 h-6" />
     },
     {
-      path: '/toolbox',
+      path: '/app/toolbox',
       name: '學習工具箱',
       icon: <AiOutlineTool className="w-6 h-6" />
     },
     {
-      path: '/projects',
+      path: '/app/projects',
       name: '專案中心',
       icon: <AiOutlineProject className="w-6 h-6" />
     },
     {
-      path: '/efficiency',
+      path: '/app/efficiency',
       name: '效率加速器',
       icon: <AiOutlineRocket className="w-6 h-6" />
     },
     {
-      path: '/metalog',
+      path: '/app/metalog',
       name: '元認知日誌',
       icon: <AiOutlineBulb className="w-6 h-6" />
     },
     {
-      path: '/schedule',
+      path: '/app/schedule',
       name: '排程中心',
       icon: <AiOutlineSchedule className="w-6 h-6" />
     },
     {
-      path: '/analytics',
+      path: '/app/analytics',
       name: '學習分析',
       icon: <AiOutlineBarChart className="w-6 h-6" />
     }

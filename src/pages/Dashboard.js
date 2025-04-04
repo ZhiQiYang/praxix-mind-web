@@ -22,7 +22,7 @@ const Dashboard = () => {
       <div className="mb-8">
         <div className="flex justify-between items-center mb-4">
           <h2 className="text-xl font-semibold text-gray-700">核心學習領域</h2>
-          <Link to="/goals/manage" className="text-blue-600 hover:text-blue-800">
+          <Link to="/app/goals/manage" className="text-blue-600 hover:text-blue-800">
             管理目標
           </Link>
         </div>
