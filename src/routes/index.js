@@ -16,7 +16,6 @@ import GoalDetail from '../pages/GoalDetail';
 // 佈局
 import MainLayout from '../components/layout/MainLayout';
 import AuthLayout from '../components/layout/AuthLayout';
-import PublicLayout from '../components/layout/PublicLayout';
 
 // 認證頁面
 import Login from '../pages/auth/Login';

@@ -5,7 +5,7 @@ import { GoalsContext } from '../context/GoalsContext';
 const GoalDetail = () => {
   const { goalId } = useParams();
   const navigate = useNavigate();
-  const { goals, updateGoal, addSubgoal, toggleSubgoalStatus, addResource, deleteGoal } = useContext(GoalsContext);
+  const { goals, addSubgoal, toggleSubgoalStatus, addResource, deleteGoal } = useContext(GoalsContext);
   
   const goal = goals.find(g => g.id === goalId);
   

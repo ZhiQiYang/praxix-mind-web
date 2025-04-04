@@ -12,8 +12,8 @@ export const UserProvider = ({ children }) => {
     return savedUser ? JSON.parse(savedUser) : initialUser;
   });
   
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState(null);
+  const [isLoading] = useState(false);
+  const [error] = useState(null);
 
   // 當用戶數據變更時保存到localStorage
   useEffect(() => {

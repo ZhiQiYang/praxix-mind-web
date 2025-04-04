@@ -1,19 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, useRoutes } from 'react-router-dom';
 
-// Layout Components
-import Navbar from './components/layout/Navbar';
-import Sidebar from './components/layout/Sidebar';
-
-// Pages
-import Dashboard from './pages/Dashboard';
-import StrategyToolbox from './pages/StrategyToolbox';
-import ProjectHub from './pages/ProjectHub';
-import EfficiencyBooster from './pages/EfficiencyBooster';
-import MetaLog from './pages/MetaLog';
-import ScheduleHub from './pages/ScheduleHub';
-import Analytics from './pages/Analytics';
-
 // Context
 import { UserProvider } from './context/UserContext';
 import { GoalsProvider } from './context/GoalsContext';

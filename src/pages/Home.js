@@ -222,18 +222,18 @@ const Home = () => {
         <footer className="bg-white">
           <div className="mx-auto max-w-7xl py-12 px-4 sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
             <div className="flex justify-center space-x-6 md:order-2">
-              <a href="#" className="text-gray-400 hover:text-gray-500">
+              <button className="text-gray-400 hover:text-gray-500">
                 <span className="sr-only">關於我們</span>
                 <span className="hover:text-gray-900">關於我們</span>
-              </a>
-              <a href="#" className="text-gray-400 hover:text-gray-500">
+              </button>
+              <button className="text-gray-400 hover:text-gray-500">
                 <span className="sr-only">聯繫我們</span>
                 <span className="hover:text-gray-900">聯繫我們</span>
-              </a>
-              <a href="#" className="text-gray-400 hover:text-gray-500">
+              </button>
+              <button className="text-gray-400 hover:text-gray-500">
                 <span className="sr-only">隱私政策</span>
                 <span className="hover:text-gray-900">隱私政策</span>
-              </a>
+              </button>
             </div>
             <div className="mt-8 md:order-1 md:mt-0">
               <p className="text-center text-base text-gray-400">
