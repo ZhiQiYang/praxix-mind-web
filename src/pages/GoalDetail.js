@@ -162,9 +162,10 @@ const GoalDetail = () => {
         )}
         
         {/* 隱藏下載鏈接 */}
+        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
         <a 
           ref={downloadRef} 
-          href="#" 
+          href="#download" 
           download=""
           aria-label="下載目標文件"
           style={{ display: 'none' }}
