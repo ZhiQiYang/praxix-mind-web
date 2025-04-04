@@ -1,15 +1,12 @@
 {
   "files": {
-    "main.css": "/praxix-mind-web/static/css/main.4a0adf3c.css",
-    "main.js": "/praxix-mind-web/static/js/main.f44ad7e0.js",
-    "static/js/453.1802971e.chunk.js": "/praxix-mind-web/static/js/453.1802971e.chunk.js",
-    "index.html": "/praxix-mind-web/index.html",
-    "main.4a0adf3c.css.map": "/praxix-mind-web/static/css/main.4a0adf3c.css.map",
-    "main.f44ad7e0.js.map": "/praxix-mind-web/static/js/main.f44ad7e0.js.map",
-    "453.1802971e.chunk.js.map": "/praxix-mind-web/static/js/453.1802971e.chunk.js.map"
+    "main.css": "/praxix-mind-web/static/css/main.7b47d979.css",
+    "main.js": "/praxix-mind-web/static/js/main.fa1bdce8.js",
+    "static/js/206.9a606e6d.chunk.js": "/praxix-mind-web/static/js/206.9a606e6d.chunk.js",
+    "index.html": "/praxix-mind-web/index.html"
   },
   "entrypoints": [
-    "static/css/main.4a0adf3c.css",
-    "static/js/main.f44ad7e0.js"
+    "static/css/main.7b47d979.css",
+    "static/js/main.fa1bdce8.js"
   ]
 }

@@ -1,6 +1,6 @@
 {
   "short_name": "Praxis Mind",
-  "name": "Praxis Mind - 個人化學習實踐中心",
+  "name": "Praxis Mind - 高效學習與個人成長平台",
   "icons": [
     {
       "src": "favicon.ico",
@@ -20,6 +20,6 @@
   ],
   "start_url": ".",
   "display": "standalone",
-  "theme_color": "#4f46e5",
+  "theme_color": "#2563eb",
   "background_color": "#ffffff"
 } 
