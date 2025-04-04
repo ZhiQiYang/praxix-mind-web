@@ -10,6 +10,8 @@ import EfficiencyBooster from '../pages/EfficiencyBooster';
 import MetaLog from '../pages/MetaLog';
 import ScheduleHub from '../pages/ScheduleHub';
 import Analytics from '../pages/Analytics';
+import GoalManagement from '../pages/GoalManagement';
+import GoalDetail from '../pages/GoalDetail';
 
 // 佈局
 import MainLayout from '../components/layout/MainLayout';
@@ -47,7 +49,8 @@ const routes = [
       { path: 'profile', element: <Navigate to="/app/profile/overview" /> },
       { path: 'profile/overview', element: <div>個人資料</div> },
       { path: 'profile/settings', element: <div>設置</div> },
-      { path: 'goals/manage', element: <div>管理目標</div> },
+      { path: 'goals/manage', element: <GoalManagement /> },
+      { path: 'goals/:goalId', element: <GoalDetail /> },
     ]
   },
   

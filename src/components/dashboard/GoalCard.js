@@ -70,13 +70,13 @@ const GoalCard = ({ goal }) => {
         {/* 底部按鈕 */}
         <div className="flex justify-between mt-4">
           <Link 
-            to={`/goals/${id}`} 
+            to={`/app/goals/${id}`} 
             className="text-sm text-blue-600 hover:text-blue-800 font-medium"
           >
             查看詳情
           </Link>
           <Link 
-            to={`/toolbox/${id}`} 
+            to={`/app/toolbox?goal=${id}`} 
             className="text-sm text-green-600 hover:text-green-800 font-medium"
           >
             學習工具
