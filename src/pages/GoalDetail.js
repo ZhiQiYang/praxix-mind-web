@@ -162,7 +162,13 @@ const GoalDetail = () => {
         )}
         
         {/* 隱藏下載鏈接 */}
-        <a ref={downloadRef} style={{ display: 'none' }}></a>
+        <a 
+          ref={downloadRef} 
+          href="#" 
+          download=""
+          aria-label="下載目標文件"
+          style={{ display: 'none' }}
+        ></a>
       </div>
       
       {/* 進度區塊 */}
