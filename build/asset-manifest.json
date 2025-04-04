@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.css": "/praxix-mind-web/static/css/main.03c10856.css",
-    "main.js": "/praxix-mind-web/static/js/main.acb62435.js",
+    "main.css": "/praxix-mind-web/static/css/main.96580d8b.css",
+    "main.js": "/praxix-mind-web/static/js/main.7b3e425e.js",
     "static/js/206.9a606e6d.chunk.js": "/praxix-mind-web/static/js/206.9a606e6d.chunk.js",
     "index.html": "/praxix-mind-web/index.html"
   },
   "entrypoints": [
-    "static/css/main.03c10856.css",
-    "static/js/main.acb62435.js"
+    "static/css/main.96580d8b.css",
+    "static/js/main.7b3e425e.js"
   ]
 }
