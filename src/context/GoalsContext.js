@@ -75,12 +75,22 @@ export const GoalsProvider = ({ children }) => {
   }, [goals]);
 
   // 添加新目標
-  const addGoal = (newGoal) => {
+  const addGoal = (newGoal, initialSubgoals = []) => {
+    // 轉換初始子目標，確保每個子目標都有唯一ID
+    const subgoals = initialSubgoals.map(sg => ({
+      id: uuidv4(),
+      title: sg.title,
+      completed: false
+    }));
+    
+    // 計算初始進度
+    const progress = subgoals.length > 0 ? 0 : 0; // 所有初始子目標預設為未完成
+    
     const goalWithId = {
       ...newGoal,
       id: uuidv4(),
-      progress: 0,
-      subgoals: [],
+      progress: progress,
+      subgoals: subgoals,
       resources: []
     };
     setGoals([...goals, goalWithId]);
@@ -160,6 +170,31 @@ export const GoalsProvider = ({ children }) => {
     }));
   };
 
+  // 複製現有目標
+  const duplicateGoal = (goalId) => {
+    const goalToDuplicate = goals.find(goal => goal.id === goalId);
+    
+    if (!goalToDuplicate) return;
+    
+    const duplicatedGoal = {
+      ...goalToDuplicate,
+      id: uuidv4(),
+      title: `${goalToDuplicate.title} (複製)`,
+      subgoals: goalToDuplicate.subgoals.map(sg => ({
+        ...sg,
+        id: uuidv4(),
+        completed: false
+      })),
+      resources: goalToDuplicate.resources.map(res => ({
+        ...res,
+        id: uuidv4()
+      })),
+      progress: 0
+    };
+    
+    setGoals([...goals, duplicatedGoal]);
+  };
+
   return (
     <GoalsContext.Provider value={{
       goals,
@@ -168,7 +203,8 @@ export const GoalsProvider = ({ children }) => {
       deleteGoal,
       addSubgoal,
       toggleSubgoalStatus,
-      addResource
+      addResource,
+      duplicateGoal
     }}>
       {children}
     </GoalsContext.Provider>

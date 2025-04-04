@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import { useParams, Link, useNavigate } from 'react-router-dom';
 import { GoalsContext } from '../context/GoalsContext';
 
@@ -12,6 +12,12 @@ const GoalDetail = () => {
   const [newSubgoal, setNewSubgoal] = useState('');
   const [isAddingResource, setIsAddingResource] = useState(false);
   const [newResource, setNewResource] = useState({ title: '', url: '' });
+  const [isBatchAddingSubgoals, setIsBatchAddingSubgoals] = useState(false);
+  const [batchSubgoals, setBatchSubgoals] = useState('');
+  const [exportOpen, setExportOpen] = useState(false);
+  
+  // 用於導出功能的文件下載
+  const downloadRef = useRef(null);
   
   if (!goal) {
     return (
@@ -67,6 +73,41 @@ const GoalDetail = () => {
     }
   };
   
+  // 處理批量添加子目標
+  const handleBatchAddSubgoals = () => {
+    if (!batchSubgoals.trim()) return;
+    
+    const subgoalLines = batchSubgoals
+      .split('\n')
+      .filter(line => line.trim() !== '');
+    
+    subgoalLines.forEach(title => {
+      if (title.trim()) {
+        addSubgoal(goal.id, title);
+      }
+    });
+    
+    setBatchSubgoals('');
+    setIsBatchAddingSubgoals(false);
+  };
+  
+  // 處理導出目標
+  const handleExportGoal = () => {
+    if (!goal) return;
+    
+    // 創建一個副本以移除不必要的信息
+    const goalCopy = { ...goal };
+    
+    // 創建導出文件
+    const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(goalCopy, null, 2));
+    
+    // 創建下載鏈接
+    const downloadAnchor = downloadRef.current;
+    downloadAnchor.setAttribute("href", dataStr);
+    downloadAnchor.setAttribute("download", `${goal.title.replace(/\s+/g, '_')}_export.json`);
+    downloadAnchor.click();
+  };
+  
   return (
     <div className="container mx-auto p-6">
       <div className="mb-6">
@@ -86,13 +127,42 @@ const GoalDetail = () => {
             <p className="text-gray-600">{goal.description}</p>
           </div>
           
-          <button 
-            onClick={handleDeleteGoal}
-            className="text-red-600 hover:text-red-800"
-          >
-            刪除目標
-          </button>
+          <div className="flex items-center">
+            <button 
+              onClick={() => setExportOpen(!exportOpen)}
+              className="text-blue-600 hover:text-blue-800 mr-4"
+            >
+              {exportOpen ? '關閉選項' : '導出目標'}
+            </button>
+            <button 
+              onClick={handleDeleteGoal}
+              className="text-red-600 hover:text-red-800"
+            >
+              刪除目標
+            </button>
+          </div>
         </div>
+        
+        {/* 導出選項 */}
+        {exportOpen && (
+          <div className="mt-4 border rounded-lg p-4 bg-gray-50">
+            <h3 className="font-medium mb-2">導出選項</h3>
+            <div className="space-y-2">
+              <button 
+                onClick={handleExportGoal}
+                className="w-full text-left px-3 py-2 bg-white border rounded-md hover:bg-gray-50"
+              >
+                導出為JSON文件
+              </button>
+              <p className="text-xs text-gray-500">
+                導出的目標可以在其他設備上導入，或作為備份。
+              </p>
+            </div>
+          </div>
+        )}
+        
+        {/* 隱藏下載鏈接 */}
+        <a ref={downloadRef} style={{ display: 'none' }}></a>
       </div>
       
       {/* 進度區塊 */}
@@ -143,22 +213,58 @@ const GoalDetail = () => {
               )}
             </ul>
             
-            <div className="mt-4 flex">
-              <input 
-                type="text"
-                value={newSubgoal}
-                onChange={(e) => setNewSubgoal(e.target.value)}
-                placeholder="添加新的子目標..."
-                className="flex-1 border rounded-l-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-              />
-              <button 
-                onClick={handleAddSubgoal}
-                disabled={!newSubgoal.trim()}
-                className="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700 transition-colors disabled:bg-blue-300"
-              >
-                添加
-              </button>
-            </div>
+            {isBatchAddingSubgoals ? (
+              <div className="mt-4 border rounded-lg p-3">
+                <h3 className="font-medium mb-2">批量添加子目標</h3>
+                <textarea 
+                  value={batchSubgoals}
+                  onChange={(e) => setBatchSubgoals(e.target.value)}
+                  placeholder="每行輸入一個子目標..."
+                  className="w-full border rounded-md px-3 py-2 mb-3 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  rows="5"
+                ></textarea>
+                <div className="flex justify-end">
+                  <button 
+                    onClick={() => setIsBatchAddingSubgoals(false)}
+                    className="text-gray-600 hover:text-gray-800 mr-2"
+                  >
+                    取消
+                  </button>
+                  <button 
+                    onClick={handleBatchAddSubgoals}
+                    disabled={!batchSubgoals.trim()}
+                    className="bg-blue-600 text-white px-3 py-1 rounded-md hover:bg-blue-700 transition-colors disabled:bg-blue-300"
+                  >
+                    添加
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <div className="mt-4 flex flex-col gap-2">
+                <div className="flex">
+                  <input 
+                    type="text"
+                    value={newSubgoal}
+                    onChange={(e) => setNewSubgoal(e.target.value)}
+                    placeholder="添加新的子目標..."
+                    className="flex-1 border rounded-l-md px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                  />
+                  <button 
+                    onClick={handleAddSubgoal}
+                    disabled={!newSubgoal.trim()}
+                    className="bg-blue-600 text-white px-4 py-2 rounded-r-md hover:bg-blue-700 transition-colors disabled:bg-blue-300"
+                  >
+                    添加
+                  </button>
+                </div>
+                <button 
+                  onClick={() => setIsBatchAddingSubgoals(true)}
+                  className="text-blue-600 hover:text-blue-800 text-sm"
+                >
+                  批量添加子目標 +
+                </button>
+              </div>
+            )}
           </div>
         </div>
         
