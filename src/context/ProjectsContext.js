@@ -4,155 +4,149 @@ import { v4 as uuidv4 } from 'uuid';
 // 創建Context
 export const ProjectsContext = createContext();
 
-// 模擬專案數據
+// 模擬資料
 const initialProjects = [
   {
     id: 'p1',
-    title: 'LINE Bot 助手開發',
-    description: '使用 Python 和 Flask 框架開發一個 LINE 聊天機器人，實現個人學習助手功能',
-    status: 'in_progress', // in_progress, completed, planned
-    progress: 35,
-    startDate: '2025-03-15',
-    dueDate: '2025-04-30',
-    priority: 'high',
-    tags: ['Python', 'Flask', 'API', '實踐專案'],
-    tasks: [
-      { id: 't1', title: '建立 Flask 專案基礎架構', completed: true },
-      { id: 't2', title: '實現 LINE 訊息傳遞', completed: true },
-      { id: 't3', title: '設計對話流程', completed: false },
-      { id: 't4', title: '整合學習資源 API', completed: false },
-      { id: 't5', title: '部署到雲端伺服器', completed: false }
-    ],
-    notes: [
-      { id: 'n1', content: 'Line Messaging API 文檔：https://developers.line.biz/en/docs/messaging-api/', createdAt: '2025-03-16' },
-      { id: 'n2', content: '使用 ngrok 進行開發環境測試', createdAt: '2025-03-18' }
+    title: '個人學習助手 Bot',
+    description: '使用 Python 和 OpenAI API 創建的學習助手',
+    goalId: '1', // 關聯到 Python & AI 學習目標
+    progress: 65,
+    status: 'active',
+    startDate: '2023-10-10',
+    targetDate: '2023-12-20',
+    tags: ['Python', 'AI', 'Bot'],
+    steps: [
+      { id: 'step1', title: '定義功能需求', completed: true },
+      { id: 'step2', title: '設計系統架構', completed: true },
+      { id: 'step3', title: '實現核心 API 整合', completed: true },
+      { id: 'step4', title: '添加學習追蹤功能', completed: false },
+      { id: 'step5', title: '部署和測試', completed: false },
     ],
     resources: [
-      { id: 'r1', title: 'LINE Developers', url: 'https://developers.line.biz/' },
-      { id: 'r2', title: 'Flask Documentation', url: 'https://flask.palletsprojects.com/' },
+      { id: 'res1', title: 'OpenAI API 文檔', url: 'https://platform.openai.com/docs/api-reference' },
+      { id: 'res2', title: 'Flask-RESTful', url: 'https://flask-restful.readthedocs.io/en/latest/' },
     ]
   },
   {
     id: 'p2',
-    title: '個人資料視覺化',
-    description: '使用 D3.js 對個人學習數據進行視覺化展示，幫助分析學習模式和效率',
-    status: 'planned',
-    progress: 0,
-    startDate: '2025-05-10',
-    dueDate: '2025-06-15',
-    priority: 'medium',
-    tags: ['D3.js', 'JavaScript', '數據視覺化'],
-    tasks: [
-      { id: 't6', title: '學習 D3.js 基礎', completed: false },
-      { id: 't7', title: '設計視覺化圖表', completed: false },
-      { id: 't8', title: '實現數據處理邏輯', completed: false },
-      { id: 't9', title: '整合到學習平台', completed: false }
+    title: '統計學習研究',
+    description: '應用統計學理論分析教育數據，找出學習效果的關鍵因素',
+    goalId: '2', // 關聯到統計學學習目標
+    progress: 40,
+    status: 'active',
+    startDate: '2023-11-05',
+    targetDate: '2024-01-15',
+    tags: ['統計', 'R語言', '數據分析'],
+    steps: [
+      { id: 'step6', title: '收集教育數據集', completed: true },
+      { id: 'step7', title: '數據清洗與預處理', completed: true },
+      { id: 'step8', title: '探索性數據分析', completed: false },
+      { id: 'step9', title: '建立統計模型', completed: false },
+      { id: 'step10', title: '撰寫研究報告', completed: false },
     ],
-    notes: [],
     resources: [
-      { id: 'r3', title: 'D3.js Documentation', url: 'https://d3js.org/' },
-      { id: 'r4', title: 'Data Visualization Best Practices', url: 'https://example.com/data-viz' },
+      { id: 'res3', title: 'R語言教程', url: 'https://r4ds.had.co.nz/' },
+      { id: 'res4', title: '教育統計數據集', url: 'https://www.kaggle.com/datasets/topic/education' },
     ]
   },
   {
     id: 'p3',
-    title: '生理學筆記系統',
-    description: '建立結構化的生理學筆記系統，整合圖解和視覺化內容',
-    status: 'completed',
-    progress: 100,
-    startDate: '2025-01-10',
-    dueDate: '2025-02-28',
-    priority: 'medium',
-    tags: ['生理學', '筆記系統', '知識管理'],
-    tasks: [
-      { id: 't10', title: '設計筆記結構', completed: true },
-      { id: 't11', title: '整合圖片資源', completed: true },
-      { id: 't12', title: '連結相關概念', completed: true },
-      { id: 't13', title: '建立複習系統', completed: true }
-    ],
-    notes: [
-      { id: 'n3', content: '可使用 Anki 建立神經系統相關的複習卡片', createdAt: '2025-01-20' }
+    title: '生理學視覺化工具',
+    description: '開發交互式生理系統視覺化工具，幫助理解人體結構',
+    goalId: '3', // 關聯到生理學學習目標
+    progress: 25,
+    status: 'planning',
+    startDate: '2023-12-01',
+    targetDate: '2024-03-30',
+    tags: ['生理學', '視覺化', 'Web開發'],
+    steps: [
+      { id: 'step11', title: '收集視覺化資源', completed: true },
+      { id: 'step12', title: '設計界面原型', completed: false },
+      { id: 'step13', title: '建立基礎模型', completed: false },
+      { id: 'step14', title: '添加交互功能', completed: false },
+      { id: 'step15', title: '整合學習資源', completed: false },
     ],
     resources: [
-      { id: 'r5', title: '人體解剖學資源庫', url: 'https://example.com/anatomy' },
+      { id: 'res5', title: '人體3D模型庫', url: 'https://www.turbosquid.com/Search/3D-Models/human-anatomy' },
+      { id: 'res6', title: 'D3.js 視覺化', url: 'https://d3js.org/' },
     ]
   }
 ];
 
 export const ProjectsProvider = ({ children }) => {
   const [projects, setProjects] = useState(() => {
-    const savedProjects = localStorage.getItem('praxisMindProjects');
-    return savedProjects ? JSON.parse(savedProjects) : initialProjects;
+    // 嘗試從本地存儲中獲取項目資料
+    const localData = localStorage.getItem('praxisMindProjects');
+    return localData ? JSON.parse(localData) : initialProjects;
   });
 
-  // 當專案數據變更時保存到localStorage
+  // 當項目資料變化時，保存到本地存儲
   useEffect(() => {
     localStorage.setItem('praxisMindProjects', JSON.stringify(projects));
   }, [projects]);
 
-  // 添加新專案
+  // 添加新項目
   const addProject = (newProject) => {
     const projectWithId = {
       ...newProject,
       id: uuidv4(),
       progress: 0,
-      tasks: [],
-      notes: [],
+      steps: [],
       resources: []
     };
     setProjects([...projects, projectWithId]);
   };
 
-  // 更新專案
+  // 更新項目
   const updateProject = (updatedProject) => {
     setProjects(projects.map(project => 
       project.id === updatedProject.id ? updatedProject : project
     ));
   };
 
-  // 刪除專案
+  // 刪除項目
   const deleteProject = (projectId) => {
     setProjects(projects.filter(project => project.id !== projectId));
   };
 
-  // 添加任務
-  const addTask = (projectId, taskTitle) => {
-    const newTask = {
+  // 添加項目步驟
+  const addProjectStep = (projectId, stepTitle) => {
+    const newStep = {
       id: uuidv4(),
-      title: taskTitle,
+      title: stepTitle,
       completed: false
     };
 
     setProjects(projects.map(project => {
       if (project.id === projectId) {
-        const updatedTasks = [...project.tasks, newTask];
         return {
           ...project,
-          tasks: updatedTasks
+          steps: [...project.steps, newStep]
         };
       }
       return project;
     }));
   };
 
-  // 更新任務狀態
-  const toggleTaskStatus = (projectId, taskId) => {
+  // 更新項目步驟狀態
+  const toggleStepStatus = (projectId, stepId) => {
     setProjects(projects.map(project => {
       if (project.id === projectId) {
-        const updatedTasks = project.tasks.map(task => 
-          task.id === taskId ? { ...task, completed: !task.completed } : task
+        const updatedSteps = project.steps.map(step => 
+          step.id === stepId ? { ...step, completed: !step.completed } : step
         );
         
-        // 重新計算專案進度
-        const completedCount = updatedTasks.filter(task => task.completed).length;
-        const totalCount = updatedTasks.length;
+        // 重新計算項目進度
+        const completedCount = updatedSteps.filter(step => step.completed).length;
+        const totalCount = updatedSteps.length;
         const newProgress = totalCount > 0 
           ? Math.round((completedCount / totalCount) * 100) 
           : 0;
         
         return {
           ...project,
-          tasks: updatedTasks,
+          steps: updatedSteps,
           progress: newProgress
         };
       }
@@ -160,27 +154,8 @@ export const ProjectsProvider = ({ children }) => {
     }));
   };
 
-  // 添加筆記
-  const addNote = (projectId, noteContent) => {
-    const newNote = {
-      id: uuidv4(),
-      content: noteContent,
-      createdAt: new Date().toISOString()
-    };
-
-    setProjects(projects.map(project => {
-      if (project.id === projectId) {
-        return {
-          ...project,
-          notes: [...project.notes, newNote]
-        };
-      }
-      return project;
-    }));
-  };
-
-  // 添加資源
-  const addResource = (projectId, resource) => {
+  // 添加項目資源
+  const addProjectResource = (projectId, resource) => {
     const newResource = {
       id: uuidv4(),
       ...resource
@@ -203,10 +178,9 @@ export const ProjectsProvider = ({ children }) => {
       addProject,
       updateProject,
       deleteProject,
-      addTask,
-      toggleTaskStatus,
-      addNote,
-      addResource
+      addProjectStep,
+      toggleStepStatus,
+      addProjectResource
     }}>
       {children}
     </ProjectsContext.Provider>

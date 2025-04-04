@@ -26,20 +26,20 @@ const initialGoals = [
   },
   {
     id: '2',
-    title: 'GitHub 專案管理',
-    description: '熟練掌握 Git 流程與專案協作方法',
-    progress: 60,
+    title: '統計學',
+    description: '掌握基礎與進階統計方法，提升數據分析能力',
+    progress: 35,
     color: 'purple',
     icon: '📊',
     subgoals: [
-      { id: 's5', title: 'Git 分支管理', completed: true },
-      { id: 's6', title: 'Pull Request 工作流', completed: true },
-      { id: 's7', title: 'CI/CD 自動化', completed: true },
-      { id: 's8', title: 'Open Source 貢獻', completed: false },
+      { id: 's5', title: '描述性統計', completed: true },
+      { id: 's6', title: '概率論基礎', completed: true },
+      { id: 's7', title: '假設檢驗', completed: false },
+      { id: 's8', title: '回歸分析', completed: false },
     ],
     resources: [
-      { id: 'r3', title: 'Pro Git 電子書', url: 'https://git-scm.com/book/zh/v2' },
-      { id: 'r4', title: 'GitHub Actions 筆記', url: '/notes/github-actions' },
+      { id: 'r3', title: '統計學圖解', url: 'https://seeing-theory.brown.edu/' },
+      { id: 'r4', title: 'R語言統計實踐', url: '/notes/r-statistics' },
     ]
   },
   {
