@@ -4,27 +4,7 @@ import React, { createContext, useState, useEffect } from 'react';
 export const UserContext = createContext();
 
 // 模擬用戶數據
-const initialUser = {
-  id: 'user1',
-  name: '學習者',
-  email: 'learner@example.com',
-  avatar: null,
-  streak: 5, // 連續學習天數
-  lastActive: new Date().toISOString(),
-  preferences: {
-    theme: 'light',
-    notifications: true,
-    dailyGoal: 120, // 每日學習目標(分鐘)
-  },
-  stats: {
-    totalStudyTime: 6780, // 總學習時間(分鐘)
-    completedTasks: 147, // 已完成任務數
-    cards: {
-      created: 85,
-      mastered: 42
-    }
-  }
-};
+const initialUser = null; // 預設為null，表示未登錄
 
 export const UserProvider = ({ children }) => {
   const [user, setUser] = useState(() => {
@@ -37,11 +17,37 @@ export const UserProvider = ({ children }) => {
 
   // 當用戶數據變更時保存到localStorage
   useEffect(() => {
-    localStorage.setItem('praxisMindUser', JSON.stringify(user));
+    if (user) {
+      localStorage.setItem('praxisMindUser', JSON.stringify(user));
+    }
   }, [user]);
+
+  // 登錄
+  const login = (userData) => {
+    setUser({
+      ...userData,
+      preferences: userData.preferences || {
+        theme: 'light',
+        notifications: true,
+        dailyGoal: 120,
+      },
+      stats: userData.stats || {
+        totalStudyTime: 0,
+        completedTasks: 0,
+        cards: {
+          created: 0,
+          mastered: 0
+        }
+      },
+      streak: userData.streak || 0,
+      lastActive: userData.lastActive || new Date().toISOString()
+    });
+  };
 
   // 更新用戶個人資料
   const updateProfile = (updatedProfile) => {
+    if (!user) return;
+    
     setUser(prev => ({
       ...prev,
       ...updatedProfile
@@ -50,6 +56,8 @@ export const UserProvider = ({ children }) => {
 
   // 更新用戶設置
   const updatePreferences = (updatedPreferences) => {
+    if (!user) return;
+    
     setUser(prev => ({
       ...prev,
       preferences: {
@@ -61,6 +69,8 @@ export const UserProvider = ({ children }) => {
 
   // 記錄學習時間
   const logStudyTime = (minutes) => {
+    if (!user) return;
+    
     setUser(prev => ({
       ...prev,
       stats: {
@@ -73,6 +83,8 @@ export const UserProvider = ({ children }) => {
 
   // 記錄完成的任務
   const logCompletedTask = () => {
+    if (!user) return;
+    
     setUser(prev => ({
       ...prev,
       stats: {
@@ -84,6 +96,8 @@ export const UserProvider = ({ children }) => {
 
   // 更新學習連續天數
   const updateStreak = () => {
+    if (!user) return;
+    
     // 這裡簡化處理，實際應用中需要根據日期判斷連續性
     setUser(prev => ({
       ...prev,
@@ -91,10 +105,10 @@ export const UserProvider = ({ children }) => {
     }));
   };
 
-  // 登出(重設數據)
+  // 登出
   const logout = () => {
     localStorage.removeItem('praxisMindUser');
-    setUser(initialUser);
+    setUser(null);
   };
 
   return (
@@ -102,12 +116,13 @@ export const UserProvider = ({ children }) => {
       user,
       isLoading,
       error,
+      login,
+      logout,
       updateProfile,
       updatePreferences,
       logStudyTime,
       logCompletedTask,
-      updateStreak,
-      logout
+      updateStreak
     }}>
       {children}
     </UserContext.Provider>
