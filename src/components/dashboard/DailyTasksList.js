@@ -26,14 +26,6 @@ const DailyTasksList = () => {
       timeEstimate: '60分鐘',
       priority: 'medium',
       color: 'purple'
-    },
-    {
-      id: 4,
-      title: '與導師視訊會議',
-      category: '指導反饋',
-      timeEstimate: '45分鐘',
-      priority: 'low',
-      color: 'orange'
     }
   ];
 
